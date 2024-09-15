@@ -16,12 +16,11 @@ function App() {
   const { user } = useAuthContext()
 
   const global = useGlobalContext()
-  console.log(global);
 
-  
-const orbMemo = useMemo(() => {
+
+  const orbMemo = useMemo(() => {
   return <Orb />
-}, [])
+  }, [])
   
   return (
 
