@@ -17,16 +17,12 @@ function App() {
 
   const global = useGlobalContext()
 
-
   const orbMemo = useMemo(() => {
   return <Orb />
   }, [])
-  
-  
+
   
   return (
-
-
     <AppStyled bg={bg} className="App">
 
     <BrowserRouter>
