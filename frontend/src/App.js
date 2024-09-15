@@ -24,7 +24,6 @@ function App() {
   
   return (
     <AppStyled bg={bg} className="App">
-
     <BrowserRouter>
       <Routes>
         <Route 
