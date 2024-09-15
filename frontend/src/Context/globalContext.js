@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { useAuthContext } from '../hooks/useAuthContext';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
 const GlobalContext = React.createContext()
 
@@ -13,9 +13,11 @@ export const GlobalProvider = ({children}) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
     //calculate incomes
     const addIncome = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-income`, {payload: income, token: user.token}, {
+        const response = await axios.post(`${BASE_URL}v1/add-income`, {payload: income, token: user.token}, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -30,7 +32,8 @@ export const GlobalProvider = ({children}) => {
     }
     
     const getIncomes = async (income) => {
-        const response = await axios.get(`${BASE_URL}get-incomes?token=${user.token}`, {
+        console.log(BASE_URL)
+        const response = await axios.get(`${BASE_URL}v1/get-incomes?token=${user.token}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -42,7 +45,7 @@ export const GlobalProvider = ({children}) => {
     }
 
     const deleteIncome = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-income/${id}`,{
+        const res = await axios.delete(`${BASE_URL}v1/delete-income/${id}`,{
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -63,7 +66,7 @@ export const GlobalProvider = ({children}) => {
 
     //calculate expenses
     const addExpense = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-expense`, {payload: income, token: user.token}, {
+        const response = await axios.post(`${BASE_URL}v1/add-expense`, {payload: income, token: user.token}, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -77,7 +80,7 @@ export const GlobalProvider = ({children}) => {
     }
     
     const getExpenses = async (income) => {
-        const response = await axios.get(`${BASE_URL}get-expenses?token=${user.token}`, {
+        const response = await axios.get(`${BASE_URL}v1/get-expenses?token=${user.token}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -89,7 +92,7 @@ export const GlobalProvider = ({children}) => {
     }
 
     const deleteExpense = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-expense/${id}`, {
+        const res = await axios.delete(`${BASE_URL}v1/delete-expense/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
