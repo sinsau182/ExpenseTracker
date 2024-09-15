@@ -13,15 +13,12 @@ import Home from "./pages/Home";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
-  
-
   const { user } = useAuthContext()
 
   const global = useGlobalContext()
   console.log(global);
 
   
-
 const orbMemo = useMemo(() => {
   return <Orb />
 }, [])
