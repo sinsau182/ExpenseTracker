@@ -26,8 +26,13 @@ function App() {
     const imageLoaded = usePreloadImage(bg);
 
     if (!imageLoaded) {
-        return null;
-    }
+      return (
+        <Loading>
+          <div className="spinner"></div>
+          Loading...
+        </Loading>
+      );
+  }
 
   return (
     <AppStyled bg={bg} className="App">
@@ -92,6 +97,72 @@ const AppStyled = styled.div`
       padding: 0.5rem;
       border-radius: 10px;
     }
+  }
+`;
+
+const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1.5rem;
+  }
+
+  &::after {
+    content: 'Loading';
+    animation: dots 1.5s steps(5, end) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dots {
+    0%, 20% {
+      color: rgba(51, 51, 51, 0);
+      text-shadow: 0.25em 0 0 rgba(51, 51, 51, 0),
+                   0.5em 0 0 rgba(51, 51, 51, 0);
+    }
+    40% {
+      color: #333;
+      text-shadow: 0.25em 0 0 rgba(51, 51, 51, 0),
+                   0.5em 0 0 rgba(51, 51, 51, 0);
+    }
+    60% {
+      text-shadow: 0.25em 0 0 #333, 0.5em 0 0 rgba(51, 51, 51, 0);
+    }
+    80%, 100% {
+      text-shadow: 0.25em 0 0 #333, 0.5em 0 0 #333;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 1rem;
   }
 `;
 
