@@ -11,6 +11,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Home from "./pages/Home";
 import { useAuthContext } from "./hooks/useAuthContext";
+import usePreloadImage from "./hooks/usePreloadImage";
 
 function App() {
   const { user } = useAuthContext()
@@ -21,7 +22,13 @@ function App() {
   return <Orb />
   }, [])
 
-  
+    // Preload the background image
+    const imageLoaded = usePreloadImage(bg);
+
+    if (!imageLoaded) {
+        return null;
+    }
+
   return (
     <AppStyled bg={bg} className="App">
 
@@ -40,10 +47,7 @@ function App() {
           element={!user ? <Signup /> : <Navigate to="/" />} 
         />
       </Routes>
-  </BrowserRouter>
-
-     
-        
+  </BrowserRouter>    
     </AppStyled>
   );
 }
@@ -69,7 +73,6 @@ const AppStyled = styled.div`
     border-radius: 32px;
     overflow-x: hidden;
     width: 100%;
-    max-width: 1200px;
     padding: 2rem;
     
     &::-webkit-scrollbar {

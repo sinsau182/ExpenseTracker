@@ -8,6 +8,7 @@ Chart.register(...registerables);
 
 const LineChart = () => {
     const {incomes, expenses} = useGlobalContext()
+    
   useEffect(() => {
     const data = [
         ...incomes.map(inc => ({date: inc.date, type: inc.type, amount: inc.amount})),

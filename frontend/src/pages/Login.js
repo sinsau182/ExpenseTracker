@@ -52,7 +52,9 @@ const Login = () => {
                 />
                 </div>
                 <div className="links">
+                <h5>Don't have an account?</h5>
               <Link to="/signup">SignUp</Link>
+              
             </div>
             {error && <div className="error">{error} </div>}
             </FormStyled>
