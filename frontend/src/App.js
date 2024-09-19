@@ -156,10 +156,11 @@ const Loading = styled.div`
       text-shadow: 0.25em 0 0 #333, 0.5em 0 0 #333;
     }
   }
+
   @media screen and (max-width: 768px) {
     font-size: 1.2rem;
   }
-
+    
   @media screen and (max-width: 480px) {
     font-size: 1rem;
   }
