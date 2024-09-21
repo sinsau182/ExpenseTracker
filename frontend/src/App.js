@@ -29,14 +29,12 @@ function App() {
       return (
         <Loading>
           <div className="spinner"></div>
-          Loading...
         </Loading>
       );
   }
 
   return (
     <AppStyled bg={bg} className="App">
-
     <BrowserRouter>
       <Routes>
         <Route 
@@ -106,27 +104,29 @@ const Loading = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  color: #2e3a59;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   position: relative;
+  padding: 0 20px;
 
   .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #333;
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #2e3a59;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1.5rem;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.2s linear infinite;
+    margin-bottom: 2rem;
   }
 
   &::after {
-    content: 'Loading';
-    animation: dots 1.5s steps(5, end) infinite;
+    content: 'Loading...';
+    color: #2e3a59;
+    margin-top: 1rem;
   }
 
   @keyframes spin {
@@ -138,32 +138,23 @@ const Loading = styled.div`
     }
   }
 
-  @keyframes dots {
-    0%, 20% {
-      color: rgba(51, 51, 51, 0);
-      text-shadow: 0.25em 0 0 rgba(51, 51, 51, 0),
-                   0.5em 0 0 rgba(51, 51, 51, 0);
-    }
-    40% {
-      color: #333;
-      text-shadow: 0.25em 0 0 rgba(51, 51, 51, 0),
-                   0.5em 0 0 rgba(51, 51, 51, 0);
-    }
-    60% {
-      text-shadow: 0.25em 0 0 #333, 0.5em 0 0 rgba(51, 51, 51, 0);
-    }
-    80%, 100% {
-      text-shadow: 0.25em 0 0 #333, 0.5em 0 0 #333;
-    }
-  }
-
   @media screen and (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    .spinner {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    .spinner {
+      width: 50px;
+      height: 50px;
+    }
   }
 `;
+
+
 
 export default App;
